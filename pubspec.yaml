@@ -1,7 +1,8 @@
 name: flutter_rustore_review
-description: A new Flutter project.
+description: Flutter RuStore Review SDK.
 version: 0.0.1
-homepage:
+homepage: https://rustore.ru
+repository: https://gitflic.ru/project/rustore/flutter-rustore-review
 
 environment:
   sdk: '>=2.18.6 <3.0.0'

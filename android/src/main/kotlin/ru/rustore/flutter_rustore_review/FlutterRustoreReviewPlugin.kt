@@ -1,35 +1,24 @@
 package ru.rustore.flutter_rustore_review
 
+import android.app.Application
+import android.content.Context
 import androidx.annotation.NonNull
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin
-import io.flutter.plugin.common.MethodCall
-import io.flutter.plugin.common.MethodChannel
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.MethodChannel.Result
+import ru.rustore.flutter_rustore_review.pigeons.Rustore
+import ru.rustore.flutter_rustore_review.utils.Log
 
 /** FlutterRustoreReviewPlugin */
-class FlutterRustoreReviewPlugin: FlutterPlugin, MethodCallHandler {
-  /// The MethodChannel that will the communication between Flutter and native Android
-  ///
-  /// This local reference serves to register the plugin with the Flutter Engine and unregister it
-  /// when the Flutter Engine is detached from the Activity
-  private lateinit var channel : MethodChannel
+class FlutterRustoreReviewPlugin: FlutterPlugin {
+  private lateinit var context: Context
+  override fun onAttachedToEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+    context = binding.applicationContext
 
-  override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter_rustore_review")
-    channel.setMethodCallHandler(this)
+    val client = FlutterRustoreReviewClient(context)
+    Rustore.Client.setup(binding.binaryMessenger, client)
   }
 
-  override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-    if (call.method == "getPlatformVersion") {
-      result.success("Android ${android.os.Build.VERSION.RELEASE}")
-    } else {
-      result.notImplemented()
-    }
-  }
+  override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
 
-  override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
-    channel.setMethodCallHandler(null)
   }
 }

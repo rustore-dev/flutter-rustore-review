@@ -1,8 +1,17 @@
+import 'package:flutter_rustore_review/pigeons/rustore.dart';
 
-import 'flutter_rustore_review_platform_interface.dart';
+class RustoreReviewClient {
+  static Client _api = Client();
 
-class FlutterRustoreReview {
-  Future<String?> getPlatformVersion() {
-    return FlutterRustoreReviewPlatform.instance.getPlatformVersion();
+  static Future<void> initialize() async {
+    return _api.initialize();
+  }
+
+  static Future<void> request() async {
+    return _api.request();
+  }
+
+  static Future<void> review() async {
+    return _api.review();
   }
 }

@@ -1,6 +1,6 @@
 name: flutter_rustore_review
 description: Flutter RuStore Review SDK.
-version: 0.0.1+1
+version: 0.0.1+2
 homepage: https://rustore.ru
 repository: https://gitflic.ru/project/rustore/flutter-rustore-review
 
@@ -41,17 +41,6 @@ flutter:
       android:
         package: ru.rustore.flutter_rustore_review
         pluginClass: FlutterRustoreReviewPlugin
-      ios:
-        pluginClass: FlutterRustoreReviewPlugin
-      linux:
-        pluginClass: FlutterRustoreReviewPlugin
-      macos:
-        pluginClass: FlutterRustoreReviewPlugin
-      windows:
-        pluginClass: FlutterRustoreReviewPluginCApi
-      web:
-        pluginClass: FlutterRustoreReviewWeb
-        fileName: flutter_rustore_review_web.dart
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

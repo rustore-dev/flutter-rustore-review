@@ -2,6 +2,7 @@ package ru.rustore.flutter_rustore_review
 
 import android.content.Context
 import ru.rustore.flutter_rustore_review.pigeons.Rustore
+import ru.rustore.sdk.core.config.SdkType
 import ru.rustore.sdk.core.tasks.OnCompleteListener
 import ru.vk.store.sdk.review.RuStoreReviewManager
 import ru.vk.store.sdk.review.RuStoreReviewManagerFactory
@@ -12,7 +13,7 @@ class FlutterRustoreReviewClient(private val context: Context): Rustore.Client {
     var info: ReviewInfo? = null
 
     override fun initialize(result: Rustore.Result<Void>?) {
-        manager = RuStoreReviewManagerFactory.create(context)
+        manager = RuStoreReviewManagerFactory.create(context, internalConfig = mapOf("type" to SdkType.FLUTTER))
 
         result?.success(null)
     }

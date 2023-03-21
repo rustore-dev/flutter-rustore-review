@@ -1,3 +1,7 @@
+## 0.0.3
+
+* Updated RuStore review SDK to 0.1.5.
+
 ## 0.0.2
 
 * Added internal analytics.

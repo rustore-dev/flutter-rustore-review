@@ -38,7 +38,7 @@ public class Rustore {
     void error(Throwable error);
   }
   /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
-  public interface Client {
+  public interface RustoreReview {
 
     void initialize(Result<Void> result);
 
@@ -46,16 +46,16 @@ public class Rustore {
 
     void review(Result<Void> result);
 
-    /** The codec used by Client. */
+    /** The codec used by RustoreReview. */
     static MessageCodec<Object> getCodec() {
       return new StandardMessageCodec();
     }
-    /**Sets up an instance of `Client` to handle messages through the `binaryMessenger`. */
-    static void setup(BinaryMessenger binaryMessenger, Client api) {
+    /**Sets up an instance of `RustoreReview` to handle messages through the `binaryMessenger`. */
+    static void setup(BinaryMessenger binaryMessenger, RustoreReview api) {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.Client.initialize", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RustoreReview.initialize", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
@@ -87,7 +87,7 @@ public class Rustore {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.Client.request", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RustoreReview.request", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {
@@ -119,7 +119,7 @@ public class Rustore {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.Client.review", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.RustoreReview.review", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {

@@ -8,7 +8,7 @@ import ru.vk.store.sdk.review.RuStoreReviewManager
 import ru.vk.store.sdk.review.RuStoreReviewManagerFactory
 import ru.vk.store.sdk.review.model.ReviewInfo
 
-class FlutterRustoreReviewClient(private val context: Context): Rustore.Client {
+class FlutterRustoreReviewClient(private val context: Context): Rustore.RustoreReview {
     var manager: RuStoreReviewManager? = null
     var info: ReviewInfo? = null
 

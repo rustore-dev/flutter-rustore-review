@@ -8,11 +8,11 @@ import 'dart:typed_data' show Float64List, Int32List, Int64List, Uint8List;
 import 'package:flutter/foundation.dart' show ReadBuffer, WriteBuffer;
 import 'package:flutter/services.dart';
 
-class Client {
-  /// Constructor for [Client].  The [binaryMessenger] named argument is
+class RustoreReview {
+  /// Constructor for [RustoreReview].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
-  Client({BinaryMessenger? binaryMessenger})
+  RustoreReview({BinaryMessenger? binaryMessenger})
       : _binaryMessenger = binaryMessenger;
   final BinaryMessenger? _binaryMessenger;
 
@@ -20,7 +20,7 @@ class Client {
 
   Future<void> initialize() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.Client.initialize', codec,
+        'dev.flutter.pigeon.RustoreReview.initialize', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(null) as List<Object?>?;
@@ -42,7 +42,7 @@ class Client {
 
   Future<void> request() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.Client.request', codec,
+        'dev.flutter.pigeon.RustoreReview.request', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(null) as List<Object?>?;
@@ -64,7 +64,7 @@ class Client {
 
   Future<void> review() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.Client.review', codec,
+        'dev.flutter.pigeon.RustoreReview.review', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(null) as List<Object?>?;

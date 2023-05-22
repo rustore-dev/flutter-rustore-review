@@ -5,7 +5,7 @@ class ReviewInfo {
 }
 
 @HostApi()
-abstract class Client {
+abstract class RustoreReview {
   @async
   void initialize();
 

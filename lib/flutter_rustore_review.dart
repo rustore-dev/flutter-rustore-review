@@ -1,7 +1,7 @@
 import 'package:flutter_rustore_review/pigeons/rustore.dart';
 
 class RustoreReviewClient {
-  static Client _api = Client();
+  static final _api = RustoreReview();
 
   static Future<void> initialize() async {
     return _api.initialize();

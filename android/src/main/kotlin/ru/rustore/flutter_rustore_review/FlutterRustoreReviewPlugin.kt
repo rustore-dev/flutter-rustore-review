@@ -15,7 +15,7 @@ class FlutterRustoreReviewPlugin: FlutterPlugin {
     context = binding.applicationContext
 
     val client = FlutterRustoreReviewClient(context)
-    Rustore.Client.setup(binding.binaryMessenger, client)
+    Rustore.RustoreReview.setup(binding.binaryMessenger, client)
   }
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {

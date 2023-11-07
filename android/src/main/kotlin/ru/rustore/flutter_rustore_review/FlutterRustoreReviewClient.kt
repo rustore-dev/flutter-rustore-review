@@ -3,12 +3,12 @@ package ru.rustore.flutter_rustore_review
 import android.content.Context
 import ru.rustore.flutter_rustore_review.pigeons.Rustore
 import ru.rustore.sdk.core.tasks.OnCompleteListener
-import ru.vk.store.sdk.review.RuStoreReviewManager
-import ru.vk.store.sdk.review.RuStoreReviewManagerFactory
-import ru.vk.store.sdk.review.model.ReviewInfo
+import ru.rustore.sdk.review.RuStoreReviewManager
+import ru.rustore.sdk.review.RuStoreReviewManagerFactory
+import ru.rustore.sdk.review.model.ReviewInfo
 
 class FlutterRustoreReviewClient(private val context: Context): Rustore.Client {
-    var manager: RuStoreReviewManager? = null
+    private var manager: RuStoreReviewManager? = null
     var info: ReviewInfo? = null
 
     override fun initialize(result: Rustore.Result<Void>?) {

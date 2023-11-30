@@ -1,5 +1,7 @@
 # flutter_rustore_review
 
+## [Документация RuStore](https://help.rustore.ru/rustore/for_developers/developer-documentation/SDK-reviews-ratings/flutter)
+
 ## Общее
 
 ### Условия корректной работы SDK

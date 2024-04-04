@@ -3,7 +3,6 @@ package ru.rustore.flutter_rustore_review
 import android.content.Context
 import ru.rustore.flutter_rustore_review.pigeons.Rustore
 import ru.rustore.sdk.core.config.SdkType
-import ru.rustore.sdk.core.tasks.OnCompleteListener
 import ru.rustore.sdk.review.RuStoreReviewManager
 import ru.rustore.sdk.review.RuStoreReviewManagerFactory
 import ru.rustore.sdk.review.model.ReviewInfo
@@ -19,16 +18,14 @@ class FlutterRustoreReviewClient(private val context: Context): Rustore.RustoreR
     }
 
     override fun request(result: Rustore.Result<Void>?) {
-        manager?.requestReviewFlow()?.addOnCompleteListener(object : OnCompleteListener<ReviewInfo> {
-            override fun onFailure(throwable: Throwable) {
-                result?.error(throwable)
-            }
-
-            override fun onSuccess(info: ReviewInfo) {
+        manager?.requestReviewFlow()
+            ?.addOnSuccessListener { info ->
                 this@FlutterRustoreReviewClient.info = info
                 result?.success(null)
             }
-        })
+            ?.addOnFailureListener { throwable ->
+                result?.error(throwable)
+            }
     }
 
     override fun review(result: Rustore.Result<Void>?) {
@@ -36,15 +33,12 @@ class FlutterRustoreReviewClient(private val context: Context): Rustore.RustoreR
             result?.error(null)
             return
         }
-
-        manager?.launchReviewFlow(info!!)?.addOnCompleteListener(object: OnCompleteListener<Unit> {
-            override fun onFailure(throwable: Throwable) {
-                result?.error(throwable)
-            }
-
-            override fun onSuccess(resp: Unit) {
+        manager?.launchReviewFlow(info!!)
+            ?.addOnSuccessListener {
                 result?.success(null)
             }
-        })
+            ?.addOnFailureListener { throwable ->
+                result?.error(throwable)
+            }
     }
 }

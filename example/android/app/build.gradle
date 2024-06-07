@@ -60,17 +60,17 @@ android {
     }
 
     signingConfigs {
-        debug {
-            storeFile file('filename.keystore')
-            keyAlias 'keystore'
-            keyPassword 'keystore'
-            storePassword 'keystore'
+        release {
+            storeFile file(System.getenv('ANDROID_KEY_STOREFILE'))
+            keyAlias System.getenv('ANDROID_KEY_ALIAS')
+            keyPassword System.getenv('ANDROID_KEYSTORE_PASSWORD')
+            storePassword System.getenv('ANDROID_KEYSTORE_PASSWORD')
         }
         release {
-            storeFile file('filename.keystore')
-            keyAlias 'keystore'
-            keyPassword 'keystore'
-            storePassword 'keystore'
+            storeFile file(System.getenv('ANDROID_KEY_STOREFILE'))
+            keyAlias System.getenv('ANDROID_KEY_ALIAS')
+            keyPassword System.getenv('ANDROID_KEYSTORE_PASSWORD')
+            storePassword System.getenv('ANDROID_KEYSTORE_PASSWORD')
         }
     }
 
@@ -81,7 +81,7 @@ android {
             signingConfig signingConfigs.release
         }
         debug {
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
         }
     }
 }

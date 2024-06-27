@@ -43,7 +43,7 @@ flutter pub add flutter_rustore_review
 
 ```
 dependencies:
-    flutter_rustore_review: ^2.0.1
+    flutter_rustore_review: ^6.0.0
 ```
 
 ## Запрос оценки

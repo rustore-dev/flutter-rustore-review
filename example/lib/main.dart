@@ -71,6 +71,7 @@ class _MyAppState extends State<MyApp> {
                             const SnackBar(
                                 content: Text(
                                     'ReviewInfo request error! See log!')));
+                           debugPrint("on err ${err}");
                       });
                     },
                   ),

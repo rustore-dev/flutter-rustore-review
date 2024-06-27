@@ -1,3 +1,7 @@
+## 6.0.0
+
+* Updated RuStore review SDK to 6.0.0.
+
 ## 2.0.1
 
 * Fix errors and updates docs.

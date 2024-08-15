@@ -66,7 +66,7 @@ android {
             keyPassword System.getenv('ANDROID_KEYSTORE_PASSWORD')
             storePassword System.getenv('ANDROID_KEYSTORE_PASSWORD')
         }
-        release {
+        debug {
             storeFile file(System.getenv('ANDROID_KEY_STOREFILE'))
             keyAlias System.getenv('ANDROID_KEY_ALIAS')
             keyPassword System.getenv('ANDROID_KEYSTORE_PASSWORD')

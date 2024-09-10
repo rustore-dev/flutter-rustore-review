@@ -2,7 +2,15 @@
 
 ## [Документация RuStore](https://help.rustore.ru/rustore/for_developers/developer-documentation/SDK-reviews-ratings/flutter)
 
-## Общее
+- [flutter\_rustore\_review](#flutter_rustore_review)
+  - [Документация RuStore](#документация-rustore)
+    - [Условия корректной работы SDK](#условия-корректной-работы-sdk)
+    - [Когда запрашивать оценку и отзыв](#когда-запрашивать-оценку-и-отзыв)
+    - [Рекомендации к дизайну](#рекомендации-к-дизайну)
+    - [Подготовка требуемых параметров](#подготовка-требуемых-параметров)
+    - [Настройка примера приложения](#настройка-примера-приложения)
+  - [Подключение в проект](#подключение-в-проект)
+  - [Запрос оценки](#запрос-оценки)
 
 ### Условия корректной работы SDK
 
@@ -30,6 +38,47 @@
 - Ничего не добавляйте поверх или по краям флоу.
 - Флоу должен открываться поверх всех слоёв. После запуска флоу не закрывайте его. Флоу завершится самостоятельно после явного действия пользователя. 
 
+### Подготовка требуемых параметров
+
+Для запуска примера, вам нужны следующие параметры:
+
+1. `applicationId` - - из приложения, которое вы публиковали в консоль RuStore, находится в файле build.gradle вашего проекта
+
+  ```
+    android {
+       defaultConfig {
+       applicationId = "ru.rustore.sdk.reviewexmaple"
+       }
+    }
+   ```
+
+2. `release.keystore` - подпись, которой было подписано приложение, опубликованное в консоль RuStore.
+
+### Настройка примера приложения
+
+
+1. Замените `applicationId` в файле example/android/app/build.gradle, на applicationId apk-файла, который вы публиковали в консоль RuStore:
+
+```
+android {
+  defaultConfig {
+    applicationId = "ru.rustore.sdk.reviewexmaple" // Зачастую в buildTypes приписывается .debug
+  }
+}
+```
+2 . Замените подпись на подпись вашего приложения. Настройте параметры `key_alias`, `key_password`, `store_password`
+```
+android{
+  signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+}
+```
 
 ## Подключение в проект
 

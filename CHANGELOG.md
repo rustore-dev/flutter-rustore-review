@@ -1,3 +1,7 @@
+## 8.0.0
+
+* Updated RuStore review SDK to 8.0.0.
+
 ## 7.0.1
 
 * Add support gradle 8

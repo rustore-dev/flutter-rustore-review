@@ -51,5 +51,5 @@ android {
 }
 
 dependencies {
-    implementation("ru.rustore.sdk:review:8.0.0")
+    implementation("ru.rustore.sdk:review:9.0.1")
 }

@@ -1,3 +1,7 @@
+## 9.0.2
+
+* Updated RuStore review SDK to 9.0.2.
+
 ## 9.0.1
 
 * Updated RuStore review SDK to 9.0.1.

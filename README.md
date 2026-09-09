@@ -1,48 +1,77 @@
+<div align="left" style="margin:0 0 14px 0;">
+
+  <span style="display:inline-block;
+               padding:.28rem .6rem;
+               border:1px solid rgba(0,0,0,.18);
+               border-radius:10px 0 0 10px;
+               font-weight:400;
+               font-size:12px;
+               letter-spacing:.06em;
+               color:#111827;
+               background:linear-gradient(180deg,#ffffff,#f3f4f6);
+               box-shadow:0 1px 0 rgba(0,0,0,.06);">
+    [RU][ru]
+  </span><span style="display:inline-block;
+               margin-left:-1px;
+               padding:.28rem .6rem;
+               border:1px solid rgba(0,0,0,.14);
+               border-radius:0 10px 10px 0;
+               font-weight:400;
+               font-size:12px;
+               letter-spacing:.06em;
+               background:linear-gradient(180deg,#e9edf2,#ffffff);
+               box-shadow:inset 0 2px 6px rgba(0,0,0,.10);">
+    EN
+  </span>
+
+</div>
+<!-- ────────────────────────────────────────────────────────────────── -->
+
 # flutter_rustore_review
 
-## [Документация RuStore](https://help.rustore.ru/rustore/for_developers/developer-documentation/SDK-reviews-ratings/flutter)
+## [Documentation RuStore](https://help.rustore.ru/rustore/for_developers/developer-documentation/SDK-reviews-ratings/flutter)
 
 - [flutter\_rustore\_review](#flutter_rustore_review)
-  - [Документация RuStore](#документация-rustore)
-    - [Условия корректной работы SDK](#условия-корректной-работы-sdk)
-    - [Когда запрашивать оценку и отзыв](#когда-запрашивать-оценку-и-отзыв)
-    - [Рекомендации к дизайну](#рекомендации-к-дизайну)
-    - [Подготовка требуемых параметров](#подготовка-требуемых-параметров)
-    - [Настройка примера приложения](#настройка-примера-приложения)
-  - [Подключение в проект](#подключение-в-проект)
-  - [Запрос оценки](#запрос-оценки)
+  - [Documentation RuStore](#documentation-rustore)
+    - [Conditions for correct SDK operation](#conditions-for-correct-sdk-operation)
+    - [When to request a rating and review](#when-to-request-a-rating-and-review)
+    - [Design recommendations](#design-recommendations)
+    - [Preparing required parameters](#preparing-required-parameters)
+    - [Setting up the sample app](#setting-up-the-sample-app)
+  - [Integration into the project](#integration-into-the-project)
+  - [Requesting a rating](#requesting-a-rating)
 
-### Условия корректной работы SDK
+### Conditions for correct SDK operation
 
-Для работы SDK оценок и отзывов необходимо соблюдение следующих условий:
+To ensure proper SDK functionality for ratings and reviews, the following conditions must be met:
 
-- ОС Android версии 7.0 или выше.
-- На устройстве пользователя установлено приложение RuStore.
-- Версия RuStoreApp на устройстве пользователя актуальная.
-- Пользователь  авторизован в приложении RuStore.
+- Android OS version 7.0 or higher.
+- The RuStore application is installed on the user's device.
+- The RuStoreApp version on the user's device is up-to-date.
+- The user is logged into the RuStore app.
 
-### Когда запрашивать оценку и отзыв
+### When to request a rating and review
 
-Чтобы решить в какой момент запросить оценку и отзыв о приложении у пользователя, следуйте рекомендациям:
+To determine when to ask a user for an app rating and review, follow these recommendations:
 
-- Запускайте флоу после того, как пользователь достаточно использовал ваше приложение.
-- Не запускайте флоу слишком часто — это ухудшит опыт пользователя вашего приложения и ограничит использование SDK оценок.
-- Не используйте призывы к действию, например, кнопку «Оценить приложение» — пользователь уже мог исчерпать лимит запуска флоу.
-- Ваше приложение не должно задавать какие-либо вопросы пользователю перед запуском или во время флоу, в том числе вопросы об их мнении (например, «Вам нравится приложение?») или прогнозирующие вопросы (например, «Вы бы поставили этому приложению 5 звёзд?»).
+- Start the flow after the user has sufficiently used your app.
+- Do not run the flow too frequently — this will degrade the user experience of your app and limit the use of the rating SDK.
+- Avoid using calls to action, such as a "Rate App" button — the user may have already reached the flow execution limit.
+- Your app should not ask any questions before or during the flow, including opinion-based questions (e.g., "Do you like the app?") or predictive questions (e.g., "Would you give this app 5 stars?").
 
-### Рекомендации к дизайну
+### Design recommendations
 
-Чтобы решить, как интегрировать флоу, следуйте рекомендациям:
+To decide how to integrate the flow, follow these recommendations:
 
-- Отображайте флоу как есть, без какого-либо вмешательства или изменения текущего дизайна, включая размер, непрозрачность, форму и другие свойства.
-- Ничего не добавляйте поверх или по краям флоу.
-- Флоу должен открываться поверх всех слоёв. После запуска флоу не закрывайте его. Флоу завершится самостоятельно после явного действия пользователя.
+- Display the flow as-is, without any interference or changes to the current design, including size, opacity, shape, and other properties.
+- Do not add anything over or around the flow.
+- The flow must open above all layers. After starting the flow, do not close it manually. The flow will terminate automatically after explicit user action.
 
-### Подготовка требуемых параметров
+### Preparing required parameters
 
-Для запуска примера, вам нужны следующие параметры:
+To run the example, you need the following parameters:
 
-1. `applicationId` - - из приложения, которое вы публиковали в консоль RuStore, находится в файле build.gradle вашего проекта
+1. `applicationId` - from the app you published in the RuStore console, located in your project’s build.gradle file
 
 ```
   android {
@@ -52,21 +81,21 @@
   }
 ```
 
-2. `release.keystore` - подпись, которой было подписано приложение, опубликованное в консоль RuStore.
+2. `release.keystore` - the signature with which the app published in the RuStore console was signed.
 
-### Настройка примера приложения
+### Setting up the sample app
 
-1. Замените `applicationId` в файле example/android/app/build.gradle, на applicationId apk-файла, который вы публиковали в консоль RuStore:
+1. Replace `applicationId` in the example/android/app/build.gradle file with the application ID of the APK you published in the RuStore console:
 
 ```
 android {
   defaultConfig {
-    applicationId = "ru.rustore.sdk.reviewexmaple" // Зачастую в buildTypes приписывается .debug
+    applicationId = "ru.rustore.sdk.reviewexmaple" // Often .debug is appended in buildTypes
   }
 }
 ```
 
-2 . Замените подпись на подпись вашего приложения. Настройте параметры `key_alias`, `key_password`, `store_password`
+2. Replace the signature with your app's signature. Configure the `key_alias`, `key_password`, and `store_password` parameters:
 
 ```
 android{
@@ -81,30 +110,30 @@ android{
 }
 ```
 
-## Подключение в проект
+## Integration into the project
 
-Для подключения пакета к проекту нужно выполнить команду
+To add the package to your project, run the command:
 
 ```
 flutter pub add flutter_rustore_review
 ```
 
-Эта команда добавит строчку в файл pubspec.yaml
+This command will add a line to the pubspec.yaml file:
 
 ```
 dependencies:
-    flutter_rustore_review: ^10.0.0
+    flutter_rustore_review: ^10.5.2
 ```
 
-## Запрос оценки
+## Requesting a rating
 
-Для отображения окна с оценкой и формой для отзыва, необходимо выполнить инициализацию плагина
+To display a window with a rating and a review form, initialize the plugin:
 
 ```
 RustoreReviewClient.initialize();
 ```
 
-После инициализации можно делать запрос и показ формы
+After initialization, you can make a request and show the form:
 
 ```
 RustoreReviewClient.request().then((value) {
@@ -115,3 +144,6 @@ RustoreReviewClient.request().then((value) {
   });
 });
 ```
+
+[ru]: README.ru.md
+[en]: README.md

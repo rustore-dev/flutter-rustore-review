@@ -1,12 +1,12 @@
 name: flutter_rustore_review
 description: Flutter RuStore Review SDK.
-version: 10.0.0
+version: 10.5.2
 homepage: https://rustore.ru
 repository: https://gitflic.ru/project/rustore/flutter-rustore-review
 
 environment:
-  sdk: '>=2.18.5 <4.0.0'
-  flutter: ">=2.5.0"
+  sdk: '>=3.3.0 <4.0.0'
+  flutter: '>=3.3.0'
 
 dependencies:
   flutter:
@@ -18,8 +18,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
-  pigeon: ^4.2.3
+  flutter_lints: ^4.0.0
+  pigeon: ^22.5.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

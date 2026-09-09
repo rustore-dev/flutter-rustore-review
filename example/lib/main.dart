@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rustore_review/flutter_rustore_review.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:android_intent_plus/android_intent.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,16 +39,13 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     launchRuStore() async {
-      const url = "rustore://apps.rustore.ru/app/ru.rustore.reviewflutter";
-
-      if (await canLaunchUrl(Uri.parse(url))) {
-        await launchUrl(Uri.parse(url));
-      } else {
-        if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('RuStore not installed!')));
-        }
-      }
+      final info = await PackageInfo.fromPlatform();
+      final url = "https://www.rustore.ru/catalog/app/${info.packageName}";
+      final intent = AndroidIntent(
+        action: 'action_view',
+        data: url,
+      );
+      await intent.launch();
     }
 
     return MaterialApp(

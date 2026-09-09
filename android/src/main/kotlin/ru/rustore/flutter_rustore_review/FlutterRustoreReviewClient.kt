@@ -11,34 +11,34 @@ class FlutterRustoreReviewClient(private val context: Context): Rustore.RustoreR
     private var manager: RuStoreReviewManager? = null
     var info: ReviewInfo? = null
 
-    override fun initialize(result: Rustore.Result<Void>?) {
+    override fun initialize(result: Rustore.VoidResult) {
         manager = RuStoreReviewManagerFactory.create(context, internalConfig = mapOf("type" to SdkType.FLUTTER))
 
-        result?.success(null)
+        result.success()
     }
 
-    override fun request(result: Rustore.Result<Void>?) {
+    override fun request(result: Rustore.VoidResult) {
         manager?.requestReviewFlow()
             ?.addOnSuccessListener { info ->
                 this@FlutterRustoreReviewClient.info = info
-                result?.success(null)
+                result.success()
             }
             ?.addOnFailureListener { throwable ->
-                result?.error(throwable)
+                result.error(throwable)
             }
     }
 
-    override fun review(result: Rustore.Result<Void>?) {
+    override fun review(result: Rustore.VoidResult) {
         if (info == null) {
-            result?.error(null)
+            result.error(IllegalStateException("ReviewInfo is null"))
             return
         }
         manager?.launchReviewFlow(info!!)
             ?.addOnSuccessListener {
-                result?.success(null)
+                result.success()
             }
             ?.addOnFailureListener { throwable ->
-                result?.error(throwable)
+                result.error(throwable)
             }
     }
 }

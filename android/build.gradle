@@ -17,7 +17,7 @@ buildscript {
 rootProject.allprojects {
     repositories {
         maven {
-            url = uri("https://artifactory-external.vkpartner.ru/artifactory/maven")
+            url = uri("https://nexus-external.rustore.ru/repository/maven-rustore-exposed")
         }
         google()
         mavenCentral()
@@ -28,7 +28,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    namespace 'ru.rustore.flutter_rustore_review'
+    if (project.android.hasProperty("namespace")) {
+        namespace 'ru.rustore.flutter_rustore_review'
+    }
 
     compileSdk 34
 
@@ -46,10 +48,10 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 23
+        minSdkVersion 24
     }
 }
 
 dependencies {
-    implementation("ru.rustore.sdk:review:10.0.0")
+    implementation("ru.rustore.sdk:review:10.5.1")
 }
